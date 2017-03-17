@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  font:
+    build: .
+    container_name: "fonts"
+    expose:
+      - "3000"
+    ports:
+      - "3001:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+
