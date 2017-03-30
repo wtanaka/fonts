@@ -9,4 +9,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use('/', express.static('fonts'));
 
-app.listen(process.env.PORT || 3101, () => {});
+app.listen(process.env.PORT || 3101, () => {
+  console.log('listening on', process.env.PORT || 3101);
+});
