@@ -7,6 +7,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use('/healthcheck', (req, res) => res.end(JSON.stringify({ ack: 'ok' })));
 app.use('/', express.static('fonts'));
 
 app.listen(process.env.PORT || 3101, () => {
