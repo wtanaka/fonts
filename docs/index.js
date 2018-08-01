@@ -8,35 +8,30 @@ const createFontObjFromDir = (basePath) => {
   return dirArray.reduce((acc, file) => {
     const filePath = `${basePath}/${file}`;
     if (fs.lstatSync(filePath).isDirectory()) {
-      // TODO - handle /italic directory traversal
       acc[file] = createFontObjFromDir(filePath);
       return acc;
     }
 
     const fontName = basePath.split('fonts/')[1].replace('/', '-');
 
-  //
-  // Map fonts directory folders to
-  //
-
-  // {
-  //   archer: {
-  //     "italic": {
-  //      "0.woff": {
-  //        path: "archer/italic/0.woff",
-  //        name: "0",
-  //        format: "woff",
-  //        fontName: "archer-italic-0"
-  //      }
-  //     },
-  //     "0.woff":{
-  //      path: "archer/0.woff",
-  //      weight: "0",
-  //      format: "woff"
-  //      fontName: "archer-0"
-  //     }
-  //   },
-  // }
+    // {
+    //   archer: {
+    //     "italic": {
+    //      "0.woff": {
+    //        path: "archer/italic/0.woff",
+    //        name: "0",
+    //        format: "woff",
+    //        fontName: "archer-italic-0"
+    //      }
+    //     },
+    //     "0.woff":{
+    //      path: "archer/0.woff",
+    //      weight: "0",
+    //      format: "woff"
+    //      fontName: "archer-0"
+    //     }
+    //   },
+    // }
     acc[file] = {
       path: `${basePath.split('fonts')[1]}/${file}`,
       weight: file.split('.')[0],
