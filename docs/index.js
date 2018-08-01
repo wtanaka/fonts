@@ -46,14 +46,6 @@ const createFontObjFromDir = (basePath) => {
 const createFontStyles = (baseFontClassName, fontBranch) =>
   Object.entries(fontBranch)
   .reduce((acc, [fontBranchKey, fontBranchObj]) => {
-    //
-    // iterate over font
-    //    if font doesn't have .path,.format,.name
-    //      recursively do function
-    //    else
-    //      construct font style string and return
-    //
-
     const { format, path, weight, fontName } = fontBranchObj;
 
     if (!path) {
