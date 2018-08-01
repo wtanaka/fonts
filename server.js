@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const app = express();
 
+const docs = require('./docs')(); // instantiate at runtime
+
 // set cors header to *
 app.use(cors());
 
@@ -18,6 +20,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/healthcheck', (req, res) => res.end(JSON.stringify({ ack: 'ok' })));
+app.use('/docs', docs);
 app.use('/', express.static('fonts'));
 
 app.listen(process.env.PORT || 3101, () => {

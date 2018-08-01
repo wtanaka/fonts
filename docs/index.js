@@ -83,8 +83,11 @@ const createFontStyles = (baseFontClassName, fontBranch) =>
 const createFontMarkup = (baseFontName, fontBranch) =>
   Object.entries(fontBranch)
   .reduce((acc, [fontBranchKey, fontBranchObj]) => {
-    const { weight, path, format, fontName } = fontBranchObj;
+    const { weight, path, fontName } = fontBranchObj;
     const className = `${fontName}-${weight}`;
+
+    let fontTitle = baseFontName.length ? `${baseFontName}-` : '';
+    fontTitle += fontBranchKey;
 
     if (path) {
       return `${acc}
@@ -93,7 +96,7 @@ const createFontMarkup = (baseFontName, fontBranch) =>
     }
 
     return `${acc}
-      <h2>${fontBranchKey}</h2>
+      <h2>${fontTitle}</h2>
       <ul>
         ${createFontMarkup(fontBranchKey, fontBranchObj)}
       </ul>
@@ -123,11 +126,14 @@ const makeFontView = fontModel => `<!doctype html>
   </body>
 </html>`;
 
-const fontModel = createFontObjFromDir('fonts');
-const fontView = makeFontView(fontModel);
 
-const docs = (req, res) => {
-  res.send(fontView);
+const docs = () => {
+  const fontModel = createFontObjFromDir('fonts');
+  const fontView = makeFontView(fontModel);
+
+  return (req, res) => {
+    res.send(fontView);
+  };
 };
 
 module.exports = docs;
