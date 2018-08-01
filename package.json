@@ -3,7 +3,7 @@
   "license": "All Rights Reserved",
   "author": "Minted LLC",
   "description": "Font server for minteds web fonts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "start": "node server.js",
     "lint": "./node_modules/eslint/bin/eslint.js ."
