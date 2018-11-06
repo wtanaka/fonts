@@ -1,5 +1,5 @@
 This is a simple microservice for fonts used on minted websites.
-You can get the .otf font file at 
+You can get the .otf font file at
 ```
 /<font-name>/<modifier?>/<weight>.woff
 ex:
@@ -7,7 +7,16 @@ ex:
 /brandon-grotesque/italic/700.woff
 ```
 
-License
+the font service is cached on the cdn at https://minted-fonts.mintedcdn.net
+
+you can hit the service directly at fonts-service.minted.com (don't do this in production)
+
+### Deploy
+
+https://jenkins-k8.mntd.net/job/main/job/minted-kubernetes/job/jobs/job/prod-dfw/job/fonts-deploy/
+
+
+### License
 ```
 /*!
  * @license
