@@ -1,0 +1,5 @@
+update_configs:
+- directory: /
+  package_manager: javascript
+  update_schedule: daily
+version: 1
